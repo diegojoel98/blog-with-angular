@@ -1,0 +1,27 @@
+<app-slider [name]="'Movies'" [size]="'small'"></app-slider>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 mb-3" id="row">
+
+                <h1 class="text-center">Movies</h1>
+                <div *ngIf="favorite"><h3>Favorites</h3>
+                <h4>{{favorite.title | uppercase}}</h4>
+                <h5 class="date">{{favorite.year | isEven}}</h5>
+                </div>
+                
+                <div *ngFor="let movie of movies">
+                    <app-pelicula [movie]="movie" (markFavorite)="showFavorite($event)"></app-pelicula> 
+                </div>                
+
+                <hr />
+                <div *ngIf="movies">
+                    <p>There are {{movies.length}} <span *ngIf="movies.length > 1">movies</span><span
+                            *ngIf="movies.length == 1">movie</span></p>
+                </div>
+
+            </div>
+            <app-sidebar class="col-12 col-md-4 mb-3"></app-sidebar>
+        </div>
+    </div>
+</section>

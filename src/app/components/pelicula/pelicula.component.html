@@ -1,0 +1,10 @@
+<article >
+    <img src="{{movie.image}}" alt="{{movie.title}}" class="img-responsive float-left img-article mr-3"
+        height="150px">
+    <p class="title-article font-weight-bold" id="title-article">{{movie.title}}</p>
+    <p class="date">5 min ago</p>
+    <a href="#" class="">Read more</a>
+    <p [style.color]="movie.year >= 2020 ? 'green' : 'red'">{{movie.year}}</p>
+    <button class="btn btn-info" (click)="favorite($event, movie)">Mark as favorite</button>
+    <div class="reset"></div>
+</article>

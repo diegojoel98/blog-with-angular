@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 mb-3" id="row">
+            <h1 class="title text-center mb-4 mt-2">{{article?.title}}</h1><hr/>
+            <!--<img src="https://www.w3schools.com/css/paris.jpg" alt="{{article.title}}" class="img-fluid mx-auto d-block">-->
+            <img src="{{url + 'get-image/' + article?.img}}" alt="{{article.title}}"
+                class="img-fluid mx-auto d-block height220" width="650px" *ngIf="article?.img">
+            <img src="../../../assets/images/default.jpg" alt="{{article?.title}}"
+                class="img-fluid mx-auto d-block height220" width="650px" height="220px" *ngIf="!article?.img">
+            <p class="date">{{article?.date | amTimeAgo }}</p>
+            <div class="text-justify text-article">{{article?.content}}</div>
+            <div class="mt-5">
+                <a [routerLink]="['/blog/edit', article?._id]" class="btn btn-warning text-white mr-4 font-weight-bold"> Edit </a>
+                <a (click)="delete(article._id)" class="btn btn-danger mx-auto text-white font-weight-bold">Delete</a>
+            </div>
+        </div>
+        <app-sidebar class="col-12 col-md-4 mb-3 mt-4"></app-sidebar>
+    </div>
+</div>

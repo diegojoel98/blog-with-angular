@@ -1,0 +1,13 @@
+<aside >
+    <div class="bg-ccc">
+        <p class="title-aside">You can do this</p>
+        <a [routerLink]="['/blog/create']" class="btn btn-red mx-auto">Create article</a>
+    </div><br/>
+    <div class="bg-ccc">
+        <p class="title-aside">Searcher</p>
+        <form action="" #searchForm="ngForm" (ngSubmit)="goSearch()">
+            <input type="text" name="search" [(ngModel)]="searchString"><br/>
+            <input type="submit" class="btn btn-red mx-auto" value="Search"/>
+        </form>                        
+    </div>
+</aside>

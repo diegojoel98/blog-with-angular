@@ -1,0 +1,16 @@
+<div *ngIf="!articles" class="text-center title">
+    Loading...
+</div>
+<div *ngIf="articles?.length == 0" class="text-center title">
+    There are no articles, try again...
+</div>
+<article id="clone-article" *ngFor="let article of articles">
+    <img src="{{url + 'get-image/' + article.img}}" alt="{{article.title}}"
+        class="img-responsive float-left img-article mr-3" height="150px" width="200px" *ngIf="article.img">
+    <img src="../../../assets/images/default.jpg" alt="{{article.title}}"
+        class="img-responsive float-left img-article mr-3" height="150px" width="200px" *ngIf="!article.img">
+    <p class="title-article font-weight-bold" id="title-article">{{article.title}}</p>
+    <p class="date">{{article.date | amTimeAgo }}</p>
+    <a [routerLink]="['/blog/article/', article._id]" class="">Read more</a>
+    <div class="reset"></div>
+</article>

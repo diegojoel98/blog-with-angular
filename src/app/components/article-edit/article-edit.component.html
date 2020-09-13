@@ -1,0 +1,39 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 mb-3" id="row">
+                <h1 class="text-center mt-4">Edit Article: {{this.article.title}}</h1>
+
+                <form (ngSubmit)="onSubmit()" #articleForm="ngForm">
+                    <div class="form-group container">                        
+                        <label for="title">Title: </label>
+                        <input type="text" id="title" name="title" class="form-control border" [ngClass]="{'border-success': title.valid, 'border-danger': !title.valid && title.touched}" required title="Type your article title" #title="ngModel" [(ngModel)]="article.title">                            
+                        <p class="text-danger" *ngIf="!title.valid && title.touched">The title is not valid</p>
+                        
+                        <label for="content">Content:</label>
+                        <textarea name="content" id="content" cols="30" rows="3" class="form-control border" [ngClass]="{'border-success': content.valid, 'border-danger': !content.valid && content.touched}" required title="Type your article content" #content="ngModel" [(ngModel)]="article.content"></textarea>
+                        <p class="text-danger" *ngIf="!content.valid && content.touched">The content is empty</p><br/>                       
+                        
+                        <label for="file0">Image: </label><br/>
+                        <angular-file-uploader 
+                            [config]="afuConfig"                            
+                            (ApiResponse)="imageUpload($event)">
+                        </angular-file-uploader><br/>  
+
+                        <div>
+                            <img src="{{url + 'get-image/' + article?.img}}" alt="{{article.title}}"
+                                class="img-fluid mx-auto d-block height220" width="650px" *ngIf="article?.img">
+                            <img src="../../../assets/images/default.jpg" alt="{{article?.title}}"
+                                class="img-fluid mx-auto d-block height220" width="650px" height="220px" *ngIf="!article?.img">
+                        </div>
+
+                        <input type="submit" class="btn btn-red" value="Save" name="submit" [disabled]="articleForm.invalid">
+                        <a [routerLink]="['/blog']" class="btn btn-red">Cancel</a><br/> <br/>
+                    </div>
+                </form>                
+
+            </div>
+            <app-sidebar class="col-12 col-md-4 mb-3 mt-4"></app-sidebar>
+        </div>
+    </div>
+</section>
